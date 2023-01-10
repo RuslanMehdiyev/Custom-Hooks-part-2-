@@ -35,8 +35,8 @@ function App() {
         <h1>Value is: {value}</h1>
         <h2>
           History:{" "}
-          {history.map((e) => (
-            <span key={e}>{e} </span>
+          {history.map((e, key) => (
+            <span key={key}>{e} </span>
           ))}
         </h2>
         <button

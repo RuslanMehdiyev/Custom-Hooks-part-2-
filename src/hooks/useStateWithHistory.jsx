@@ -8,26 +8,23 @@ function useStateWithHistory(initialState = 0) {
   function setValue(newValue) {
     setInitialValue(newValue);
     setHistory([...history, +newValue]);
-    // console.log(history[indexOfValue]);
-    setIndexOfValue(history.length);
+    setIndexOfValue(indexOfValue + 1);
   }
 
   function goBack() {
-    // console.log(indexOfValue);
     if (indexOfValue <= 0) {
       return;
     }
     setIndexOfValue((prev) => prev - 1);
-    setInitialValue(history[indexOfValue]);
+    setInitialValue(history[indexOfValue - 1]);
   }
 
   function goForward() {
-    // console.log(indexOfValue);
     if (indexOfValue >= history.length - 1) {
       return;
     }
     setIndexOfValue((prev) => prev + 1);
-    setInitialValue(history[indexOfValue]);
+    setInitialValue(history[indexOfValue + 1]);
   }
 
   return [value, setValue, history, goBack, goForward];
